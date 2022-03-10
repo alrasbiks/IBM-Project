@@ -1,0 +1,25 @@
+import requests
+import os 
+from PIL import Image
+from IPython.display import IFrame
+#GET request //# Use single quotation marks for defining string
+url='https://www.ibm.com/'  
+r=requests.get(url)
+#status of the request
+r.status_code  
+#view request headers //r.request.body
+print(r.request.headers)  
+#HTTP response header
+header=r.headers  
+#obtain the date
+header['date']  
+#obtain the type of data
+header['Content-Type']  
+r.encoding
+#view text
+r.text[0:100]  
+#write content(image)
+path=os.path.join(os.getcwd(),'image.png')
+with open(path,'wb') as f:
+    f.write(r.content)
+Image.open(path)
